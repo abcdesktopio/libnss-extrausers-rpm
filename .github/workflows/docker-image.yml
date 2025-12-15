@@ -98,14 +98,14 @@ jobs:
         with:
           image: ghcr.io/${{ env.REGISTRY_IMAGE }}_rockylinux:8
           path: /output/libnss-extrausers-0.6-1.el8.x86_64.rpm
-          destination: /target/libnss-extrausers-0.6-1.el8.x86_64.rpm
+          destination: /target
 
       - uses: shrink/actions-docker-extract@v3
         id: extract-libnss-extrausers-el9
         with:
           image: ghcr.io/${{ env.REGISTRY_IMAGE }}_rockylinux:9
           path: /output/extract-libnss-extrausers-0.6-1.el9.x86_64.rpm
-          destination: /target/extract-libnss-extrausers-0.6-1.el9.x86_64.rpm
+          destination: /target
           
       - name: Upload binaries to release el8
         uses: svenstaro/upload-release-action@v2
