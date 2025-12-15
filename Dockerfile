@@ -52,9 +52,9 @@ WORKDIR /root
 # Download original Debian source + Debian patchset
 # -----------------------------------------------------------------------------
 RUN wget -O $SOURCES_DIR/libnss-extrausers_$VERSION.orig.tar.gz \
-    http://deb.debian.org/debian/pool/main/libn/libnss-extrausers/libnss-extrausers_0.6.orig.tar.gz && \
+    http://deb.debian.org/debian/pool/main/libn/libnss-extrausers/libnss-extrausers_$VERSION.orig.tar.gz && \
     wget -O $SOURCES_DIR/libnss-extrausers_$VERSION-$DEB_RELEASE.debian.tar.xz \
-    http://deb.debian.org/debian/pool/main/libn/libnss-extrausers/libnss-extrausers_0.6-6.debian.tar.xz
+    http://deb.debian.org/debian/pool/main/libn/libnss-extrausers/libnss-extrausers_$VERSION-$DEB_RELEASE.debian.tar.xz
 
 
 # -----------------------------------------------------------------------------
@@ -64,9 +64,9 @@ RUN wget -O $SOURCES_DIR/libnss-extrausers_$VERSION.orig.tar.gz \
 # -----------------------------------------------------------------------------
 RUN mkdir /tmp/src && \
     cd /tmp/src && \
-    tar -xf /root/rpmbuild/SOURCES/libnss-extrausers_0.6.orig.tar.gz && \
-    cd libnss-extrausers-0.6 && \
-    tar -xf /root/rpmbuild/SOURCES/libnss-extrausers_0.6-6.debian.tar.xz
+    tar -xf /root/rpmbuild/SOURCES/libnss-extrausers_$VERSION.orig.tar.gz && \
+    cd libnss-extrausers-$VERSION && \
+    tar -xf /root/rpmbuild/SOURCES/libnss-extrausers_$VERSION-$DEB_RELEASE.debian.tar.xz
 
 # -----------------------------------------------------------------------------
 # Inject autotools build files
