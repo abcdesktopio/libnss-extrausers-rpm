@@ -1,5 +1,6 @@
 # libnss-extrausers-rpm
-rpm package for nss-extrausers
+
+This Name Service Switch (NSS) module reads /var/lib/extrausers/passwd, /var/lib/extrausers/shadow and /var/lib/extrausers/groups, allowing to store system accounts and accounts copied from other systems in different files. `libnss-extrausers` is a debian package. This repository build the package `libnss-extrausers` for rpm on `rockylinux:8` and `rockylinux:9`
 
 # install
 
@@ -40,8 +41,8 @@ wget -O $SOURCES_DIR/libnss-extrausers_$VERSION.orig.tar.gz \  http://deb.debian
 # Dockerfile
 
 This repo build for `amd64` and `arm64` the images 
-- `ghcr.io/abcdesktopio/libnss-extrausers-rpm_rockylinux:9`
 - `ghcr.io/abcdesktopio/libnss-extrausers-rpm_rockylinux:8`
+- `ghcr.io/abcdesktopio/libnss-extrausers-rpm_rockylinux:9`
 
 ## File location 
 
