@@ -19,8 +19,8 @@ rpm -i https://github.com/abcdesktopio/libnss-extrausers-rpm/releases/download/l
 
 Download file from the release latest
 
-[libnss-extrausers-0.6-1.el8.x86_64.rpm](https://github.com/abcdesktopio/libnss-extrausers-rpm/releases/download/libnss-extrausers-0.6-1/libnss-extrausers-0.6-1.el8.x86_64.rpm)
-[libnss-extrausers-0.6-1.el9.x86_64.rpm](https://github.com/abcdesktopio/libnss-extrausers-rpm/releases/download/libnss-extrausers-0.6-1/libnss-extrausers-0.6-1.el9.x86_64.rpm)
+- [libnss-extrausers-0.6-1.el8.x86_64.rpm](https://github.com/abcdesktopio/libnss-extrausers-rpm/releases/download/libnss-extrausers-0.6-1/libnss-extrausers-0.6-1.el8.x86_64.rpm)
+- [libnss-extrausers-0.6-1.el9.x86_64.rpm](https://github.com/abcdesktopio/libnss-extrausers-rpm/releases/download/libnss-extrausers-0.6-1/libnss-extrausers-0.6-1.el9.x86_64.rpm)
 
 
 # source
