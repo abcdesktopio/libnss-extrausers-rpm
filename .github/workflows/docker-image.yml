@@ -9,6 +9,7 @@ on:
     - cron: '0 0 * * 0-6'
     
 env: 
+  imagename: 'rockylinux'
   imagetag: ${{ github.head_ref || github.ref_name || 'dev' }}
   branch: ${{ github.head_ref || github.ref_name || 'dev' }}
   REGISTRY_IMAGE: abcdesktopio/libnss-extrausers-rpm
@@ -41,7 +42,20 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and push Docker image
-        id: build
+        id: build_rockylinux_8
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          build-args: |
+            BASE_IMAGE=rockylinux
+            BASE_RELEASE=8
+          file: Dockerfile
+          platforms: linux/amd64, linux/arm64
+          tags: ghcr.io/${{ env.REGISTRY_IMAGE }}_rockylinux:8
+
+      - name: Build and push Docker image
+        id: build_rockylinux_9
         uses: docker/build-push-action@v6
         with:
           context: .
@@ -53,6 +67,31 @@ jobs:
           platforms: linux/amd64, linux/arm64
           tags: ghcr.io/${{ env.REGISTRY_IMAGE }}_rockylinux:9
 
+      - name: test Docker image
+        id: test_rockylinux_8
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: false
+          build-args: |
+            TEST_IMAGE=ghcr.io/${{ env.REGISTRY_IMAGE }}_rockylinux
+            BASE_IMAGE=rockylinux
+            BASE_RELEASE=8
+          file: Dockerfile
+          platforms: linux/amd64, linux/arm64
+
+      - name: test Docker image
+        id: test_rockylinux_9
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: false
+          build-args: |
+            TEST_IMAGE=ghcr.io/${{ env.REGISTRY_IMAGE }}_rockylinux
+            BASE_IMAGE=rockylinux
+            BASE_RELEASE=9
+          file: Dockerfile
+          platforms: linux/amd64, linux/arm64
 
 
  
