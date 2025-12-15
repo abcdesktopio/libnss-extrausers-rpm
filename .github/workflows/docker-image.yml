@@ -104,8 +104,8 @@ jobs:
         id: extract-libnss-extrausers-0.6-1.el9.x86_64.rpm
         with:
           image: ghcr.io/${{ env.REGISTRY_IMAGE }}_rockylinux:9
-          path: /output/extract-libnss-extrausers-0.6-1.el8.x86_64.rpm
-          destination: /target/extract-libnss-extrausers-0.6-1.el8.x86_64.rpm
+          path: /output/extract-libnss-extrausers-0.6-1.el9.x86_64.rpm
+          destination: /target/extract-libnss-extrausers-0.6-1.el9.x86_64.rpm
           
       - name: Upload binaries to release libnss-extrausers-0.6-1.el8.x86_64.rpm
         uses: svenstaro/upload-release-action@v2
