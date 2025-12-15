@@ -18,11 +18,15 @@ wget -O $SOURCES_DIR/libnss-extrausers_$VERSION.orig.tar.gz \  http://deb.debian
 
 # Dockerfile
 
-This repo build this images `ghcr.io/abcdesktopio/libnss-extrausers-rpm_rockylinux:9` and `ghcr.io/abcdesktopio/libnss-extrausers-rpm_rockylinux:8` for `amd64` and `arm64`
+This repo build for `amd64` and `arm64` the images 
+- `ghcr.io/abcdesktopio/libnss-extrausers-rpm_rockylinux:9`
+- `ghcr.io/abcdesktopio/libnss-extrausers-rpm_rockylinux:8`
 
 ## File location 
 
+rpm file is located inside the `/output` directory
+
 ```Dockerfile
-COPY --from=ghcr.io/abcdesktopio/libnss-extrausers-rpm_rockylinux:9 /root/rpmbuild/RPMS/*/libnss-extrausers*.rpm /
+COPY --from=ghcr.io/abcdesktopio/libnss-extrausers-rpm_rockylinux:9 /output/libnss-extrausers-0.6-1.el9.x86_64.rpm /
 RUN rpm -i /libnss-extrausers*.rpm
 ```
