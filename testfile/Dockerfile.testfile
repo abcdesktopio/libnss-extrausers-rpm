@@ -1,0 +1,25 @@
+# -----------------------------------------------------------------------------
+# Build environment for libnss-extrausers on Rocky Linux 9
+# This container:
+#   - installs build tools
+#   - downloads Debian sources
+#   - adds an autotools build system (configure.ac + Makefile.am)
+#   - runs autoreconf to generate configure
+#   - builds the library via rpmbuild
+# -----------------------------------------------------------------------------
+
+# default TAG is dev
+ARG BASE_RELEASE=9
+ARG BASE_IMAGE=rockylinux
+
+FROM ${BASE_IMAGE}:${BASE_RELEASE}
+RUN  dnf install -y diffutils
+COPY --from=ghcr.io/abcdesktopio/libnss-extrausers-rpm_rockylinux:9 /root/rpmbuild/RPMS/*/libnss-extrausers*.rpm /
+RUN rpm -i /*.rpm
+COPY passwd group shadow /var/lib/extrausers
+COPY nsswitch.conf /etc/nsswitch.conf
+COPY result.expected /
+RUN id fry > result.done
+RUN diff result.done /result.expected
+CMD ["bash"]
+
