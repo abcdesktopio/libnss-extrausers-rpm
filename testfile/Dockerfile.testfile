@@ -11,10 +11,14 @@
 # default TAG is dev
 ARG BASE_RELEASE=9
 ARG BASE_IMAGE=rockylinux
+ARG TEST_IMAGE=ghcr.io/abcdesktopio/libnss-extrausers-rpm_rockylinux
+
+# IMAGE_SOURCE is the contianer image with the RPM package 
+FROM ${TEST_IMAGE}:${BASE_RELEASE} AS IMAGE_SOURCE
 
 FROM ${BASE_IMAGE}:${BASE_RELEASE}
 RUN  dnf install -y diffutils
-COPY --from=ghcr.io/abcdesktopio/libnss-extrausers-rpm_rockylinux:9 /root/rpmbuild/RPMS/*/libnss-extrausers*.rpm /
+COPY --from=IMAGE_SOURCE /root/rpmbuild/RPMS/*/libnss-extrausers*.rpm /
 RUN rpm -i /*.rpm
 COPY passwd group shadow /var/lib/extrausers
 COPY nsswitch.conf /etc/nsswitch.conf
