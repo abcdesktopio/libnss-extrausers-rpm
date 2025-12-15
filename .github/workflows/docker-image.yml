@@ -113,7 +113,7 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: target/libnss-extrausers-0.6-1.el8.x86_64.rpm
           asset_name: libnss-extrausers-0.6-1.el8.x86_64.rpm
-          tag: 0.6
+          tag: libnss-extrausers-0.6-1
 
       - name: Upload binaries to release el9
         uses: svenstaro/upload-release-action@v2
@@ -121,7 +121,7 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: target/libnss-extrausers-0.6-1.el9.x86_64.rpm
           asset_name: libnss-extrausers-0.6-1.el9.x86_64.rpm
-          tag: 0.6
+          tag: libnss-extrausers-0.6-1
  
 
  
