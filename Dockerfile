@@ -8,7 +8,12 @@
 #   - builds the library via rpmbuild
 # -----------------------------------------------------------------------------
 
-FROM rockylinux:9
+# default TAG is dev
+ARG BASE_RELEASE=9
+ARG BASE_IMAGE=rockylinux
+
+FROM ${BASE_IMAGE}:${BASE_RELEASE}
+
 
 # Environment variables
 ENV SPEC_DIR=/root/rpmbuild/SPECS
