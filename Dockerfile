@@ -100,7 +100,8 @@ RUN rpmbuild -ba --define "debug_package %nil" /root/rpmbuild/SPECS/libnss-extra
 # -----------------------------------------------------------------------------
 # Create a package output
 # -----------------------------------------------------------------------------
-RUN mkdir -p /output && cp /rpmbuild/RPMS/*/libnss-extrausers-*.rpm /output
+RUN mkdir -p /output 
+# && cp /rpmbuild/RPMS/*/libnss-extrausers-*.rpm /output
 
 # -----------------------------------------------------------------------------
 # Output directory for the resulting RPMs
