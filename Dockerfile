@@ -71,21 +71,21 @@ RUN mkdir /tmp/src && \
 # -----------------------------------------------------------------------------
 # Inject autotools build files
 # -----------------------------------------------------------------------------
-COPY configure.ac /tmp/src/libnss-extrausers-0.6/
-COPY Makefile.am /tmp/src/libnss-extrausers-0.6/
-COPY src-Makefile.am /tmp/src/libnss-extrausers-0.6/src/Makefile.am
+COPY configure.ac /tmp/src/libnss-extrausers-$VERSION/
+COPY Makefile.am /tmp/src/libnss-extrausers-$VERSION/
+COPY src-Makefile.am /tmp/src/libnss-extrausers-$VERSION/src/Makefile.am
 COPY Makefile /Makefile 
+
 # -----------------------------------------------------------------------------
 # Generate configure script using autoreconf
 # -----------------------------------------------------------------------------
-RUN cd /tmp/src/libnss-extrausers-0.6 && \
-    autoreconf -fi
+RUN cd /tmp/src/libnss-extrausers-$VERSION && autoreconf -fi
 
 # -----------------------------------------------------------------------------
 # Repack sources including autotools build system
 # -----------------------------------------------------------------------------
 RUN cd /tmp/src && \
-    tar -czf /root/rpmbuild/SOURCES/libnss-extrausers-0.6-autotools.tar.gz libnss-extrausers-0.6
+    tar -czf /root/rpmbuild/SOURCES/libnss-extrausers-$VERSION-autotools.tar.gz libnss-extrausers-$VERSION
 
 # -----------------------------------------------------------------------------
 # Copy final SPEC file
@@ -97,11 +97,7 @@ COPY libnss-extrausers.spec /root/rpmbuild/SPECS/
 # -----------------------------------------------------------------------------
 RUN rpmbuild -ba --define "debug_package %nil" /root/rpmbuild/SPECS/libnss-extrausers.spec
 
-# -----------------------------------------------------------------------------
-# Create a package output
-# -----------------------------------------------------------------------------
-RUN mkdir -p /output 
-# && cp /rpmbuild/RPMS/*/libnss-extrausers-*.rpm /output
+RUN mkdir -p /output && cp /root/rpmbuild/RPMS/*/libnss-extrausers-*.rpm /output
 
 # -----------------------------------------------------------------------------
 # Output directory for the resulting RPMs
