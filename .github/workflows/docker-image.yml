@@ -94,20 +94,20 @@ jobs:
           platforms: linux/amd64, linux/arm64
 
       - uses: shrink/actions-docker-extract@v3
-        id: extract-libnss-extrausers-0.6-1.el8.x86_64.rpm
+        id: extract-libnss-extrausers-0.6-1_el8
         with:
           image: ghcr.io/${{ env.REGISTRY_IMAGE }}_rockylinux:8
           path: /output/libnss-extrausers-0.6-1.el8.x86_64.rpm
           destination: /target/libnss-extrausers-0.6-1.el8.x86_64.rpm
 
       - uses: shrink/actions-docker-extract@v3
-        id: extract-libnss-extrausers-0.6-1.el9.x86_64.rpm
+        id: extract-libnss-extrausers-0.6-1_el9
         with:
           image: ghcr.io/${{ env.REGISTRY_IMAGE }}_rockylinux:9
           path: /output/extract-libnss-extrausers-0.6-1.el9.x86_64.rpm
           destination: /target/extract-libnss-extrausers-0.6-1.el9.x86_64.rpm
           
-      - name: Upload binaries to release libnss-extrausers-0.6-1.el8.x86_64.rpm
+      - name: Upload binaries to release el8
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
@@ -115,7 +115,7 @@ jobs:
           asset_name: libnss-extrausers-0.6-1.el8.x86_64.rpm
           tag: 0.6
 
-      - name: Upload binaries to release libnss-extrausers-0.6-1.el9.x86_64.rpm
+      - name: Upload binaries to release el9
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
