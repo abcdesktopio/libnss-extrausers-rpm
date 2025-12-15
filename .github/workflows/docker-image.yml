@@ -94,14 +94,14 @@ jobs:
           platforms: linux/amd64, linux/arm64
 
       - uses: shrink/actions-docker-extract@v3
-        id: extract-libnss-extrausers-0.6-1_el8
+        id: extract-libnss-extrausers-el8
         with:
           image: ghcr.io/${{ env.REGISTRY_IMAGE }}_rockylinux:8
           path: /output/libnss-extrausers-0.6-1.el8.x86_64.rpm
           destination: /target/libnss-extrausers-0.6-1.el8.x86_64.rpm
 
       - uses: shrink/actions-docker-extract@v3
-        id: extract-libnss-extrausers-0.6-1_el9
+        id: extract-libnss-extrausers-el9
         with:
           image: ghcr.io/${{ env.REGISTRY_IMAGE }}_rockylinux:9
           path: /output/extract-libnss-extrausers-0.6-1.el9.x86_64.rpm
