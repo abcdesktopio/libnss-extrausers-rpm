@@ -41,12 +41,13 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push Docker image
+      - name: Build and push Docker image rockylinux 8
         id: build_rockylinux_8
         uses: docker/build-push-action@v6
         with:
           context: .
           push: true
+          load: true
           build-args: |
             BASE_IMAGE=rockylinux
             BASE_RELEASE=8
@@ -54,12 +55,13 @@ jobs:
           platforms: linux/amd64, linux/arm64
           tags: ghcr.io/${{ env.REGISTRY_IMAGE }}_rockylinux:8
 
-      - name: Build and push Docker image
+      - name: Build and push Docker image rockylinux 9
         id: build_rockylinux_9
         uses: docker/build-push-action@v6
         with:
           context: .
           push: true
+          load: true
           build-args: |
             BASE_IMAGE=rockylinux
             BASE_RELEASE=9
@@ -67,7 +69,7 @@ jobs:
           platforms: linux/amd64, linux/arm64
           tags: ghcr.io/${{ env.REGISTRY_IMAGE }}_rockylinux:9
 
-      - name: test Docker image
+      - name: test Docker image rockylinux 8
         id: test_rockylinux_8
         uses: docker/build-push-action@v6
         with:
@@ -80,7 +82,7 @@ jobs:
           file: Dockerfile
           platforms: linux/amd64, linux/arm64
 
-      - name: test Docker image
+      - name: test Docker image rockylinux 9
         id: test_rockylinux_9
         uses: docker/build-push-action@v6
         with:
@@ -93,5 +95,17 @@ jobs:
           file: Dockerfile
           platforms: linux/amd64, linux/arm64
 
+      - uses: shrink/actions-docker-extract@v3
+        id: extract
+        with:
+          image: ghcr.io/${{ env.REGISTRY_IMAGE }}_rockylinux:8
+          path: /output
+          destination: dist
+
+      - name: Upload Dist
+        uses: actions/upload-artifact@v3
+        with:
+          path: dist
+ 
 
  
