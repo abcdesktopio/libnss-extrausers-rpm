@@ -1,0 +1,6 @@
+lib_LTLIBRARIES = libnss_extrausers.la
+
+libnss_extrausers_la_SOURCES = nss_extrausers.c
+libnss_extrausers_la_LDFLAGS = -module -avoid-version -shared
+libnss_extrausers_la_LIBADD =
+
