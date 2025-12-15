@@ -94,16 +94,34 @@ jobs:
           platforms: linux/amd64, linux/arm64
 
       - uses: shrink/actions-docker-extract@v3
-        id: extract
+        id: extract-libnss-extrausers-0.6-1.el8.x86_64.rpm
         with:
           image: ghcr.io/${{ env.REGISTRY_IMAGE }}_rockylinux:8
-          path: /output
-          destination: dist
+          path: /output/libnss-extrausers-0.6-1.el8.x86_64.rpm
+          destination: /target/libnss-extrausers-0.6-1.el8.x86_64.rpm
 
-      - name: Upload Dist
-        uses: actions/upload-artifact@v4
+      - uses: shrink/actions-docker-extract@v3
+        id: extract-libnss-extrausers-0.6-1.el9.x86_64.rpm
         with:
-          path: dist
+          image: ghcr.io/${{ env.REGISTRY_IMAGE }}_rockylinux:9
+          path: /output/extract-libnss-extrausers-0.6-1.el8.x86_64.rpm
+          destination: /target/extract-libnss-extrausers-0.6-1.el8.x86_64.rpm
+          
+      - name: Upload binaries to release libnss-extrausers-0.6-1.el8.x86_64.rpm
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: /target/libnss-extrausers-0.6-1.el8.x86_64.rpm
+          asset_name: libnss-extrausers-0.6-1.el8.x86_64.rpm
+          tag: 0.6
+
+      - name: Upload binaries to release libnss-extrausers-0.6-1.el9.x86_64.rpm
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: /target/libnss-extrausers-0.6-1.el9.x86_64.rpm
+          asset_name: libnss-extrausers-0.6-1.el9.x86_64.rpm
+          tag: 0.6
  
 
  
