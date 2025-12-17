@@ -1,19 +1,12 @@
 # -----------------------------------------------------------------------------
-# Build environment for libnss-extrausers on Rocky Linux 9
-# This container:
-#   - installs build tools
-#   - downloads Debian sources
-#   - adds an autotools build system (configure.ac + Makefile.am)
-#   - runs autoreconf to generate configure
-#   - builds the library via rpmbuild
+# Dockerfile for testing libnss-extrausers-rpm_rockylinux 
 # -----------------------------------------------------------------------------
 
-# default TAG is dev
 ARG BASE_RELEASE=9
 ARG BASE_IMAGE=rockylinux
 ARG TEST_IMAGE=ghcr.io/abcdesktopio/libnss-extrausers-rpm_rockylinux
 
-# IMAGE_SOURCE is the contianer image with the RPM package 
+# IMAGE_SOURCE is the container image with the RPM package 
 FROM ${TEST_IMAGE}:${BASE_RELEASE} AS IMAGE_SOURCE
 
 FROM ${BASE_IMAGE}:${BASE_RELEASE}
@@ -26,4 +19,3 @@ COPY result.expected /
 RUN id fry > result.done
 RUN diff result.done /result.expected
 CMD ["bash"]
-
