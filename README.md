@@ -66,3 +66,16 @@ COPY --from=ghcr.io/abcdesktopio/libnss-extrausers-rpm_rockylinux:9 /output/libn
 RUN rpm -i /tmp/libnss-extrausers-0.6-1.el9.x86_64.rpm
 ```
 
+
+# Test files using Dockerfile.testfile
+
+To run the test
+- clone this repo
+- build the image using `Dockerfile.testfile` 
+
+
+```
+git clone https://github.com/abcdesktopio/libnss-extrausers-rpm.git
+cd libnss-extrausers-rpm/testfile
+docker build -t libnss-extrausers-rpm-test -f Dockerfile.testfile  .
+```
