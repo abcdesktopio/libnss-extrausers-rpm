@@ -78,3 +78,36 @@ git clone https://github.com/abcdesktopio/libnss-extrausers-rpm.git
 cd libnss-extrausers-rpm/testfile
 docker build -t libnss-extrausers-rpm-test -f Dockerfile.testfile  .
 ```
+
+You shoud read 
+
+
+```
+ => [internal] load build definition from Dockerfile.testfile                                                                                                                                        0.0s
+ => => transferring dockerfile: 832B                                                                                                                                                                 0.0s
+ => [internal] load metadata for docker.io/library/rockylinux:9                                                                                                                                      0.0s
+ => [internal] load metadata for ghcr.io/abcdesktopio/libnss-extrausers-rpm_rockylinux:9                                                                                                             0.4s
+ => [internal] load .dockerignore                                                                                                                                                                    0.0s
+ => => transferring context: 2B                                                                                                                                                                      0.0s
+ => CACHED [stage-1 1/9] FROM docker.io/library/rockylinux:9                                                                                                                                         0.0s
+ => CACHED [image_source 1/1] FROM ghcr.io/abcdesktopio/libnss-extrausers-rpm_rockylinux:9@sha256:7ad469cadf99004549be4acee4415ad353f1e360bdadab911d3bedc7b36a1f4a                                   0.0s
+ => [internal] load build context                                                                                                                                                                    0.0s
+ => => transferring context: 144B                                                                                                                                                                    0.0s
+ => [stage-1 2/9] RUN  dnf install -y diffutils                                                                                                                                                      7.8s
+ => [stage-1 3/9] COPY --from=image_source /root/rpmbuild/RPMS/*/libnss-extrausers*.rpm /                                                                                                            0.1s 
+ => [stage-1 4/9] RUN rpm -i /*.rpm                                                                                                                                                                  0.2s 
+ => [stage-1 5/9] COPY passwd group shadow /var/lib/extrausers                                                                                                                                       0.0s 
+ => [stage-1 6/9] COPY nsswitch.conf /etc/nsswitch.conf                                                                                                                                              0.0s 
+ => [stage-1 7/9] COPY result.expected /                                                                                                                                                             0.0s 
+ => [stage-1 8/9] RUN id fry > result.done                                                                                                                                                           0.2s 
+ => [stage-1 9/9] RUN diff result.done /result.expected                                                                                                                                              0.2s
+ => exporting to image                                                                                                                                                                               0.3s
+ => => exporting layers                                                                                                                                                                              0.3s
+ => => writing image sha256:cf7af669e50407782025a53cb67ef6f12e00f92b16603128569ba75418c98446                                                                                                         0.0s
+ => => naming to docker.io/library/libnss-extrausers-rpm-test
+```
+
+The user `fry` is populated in `/var/lib/extrausers/passwd` and `/var/lib/extrausers/group`
+ 
+
+
