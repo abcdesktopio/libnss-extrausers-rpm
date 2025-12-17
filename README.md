@@ -1,6 +1,15 @@
 # libnss-extrausers-rpm
 
-This Name Service Switch (NSS) module reads /var/lib/extrausers/passwd, /var/lib/extrausers/shadow and /var/lib/extrausers/groups, allowing to store system accounts and accounts copied from other systems in different files. `libnss-extrausers` is a debian package. This repository build the package `libnss-extrausers` for rpm on `rockylinux:8` and `rockylinux:9`
+This Name Service Switch (NSS) module reads `/var/lib/extrausers/passwd`, `/var/lib/extrausers/shadow` and `/var/lib/extrausers/groups`, allowing to store system accounts and accounts copied from other systems in different files. 
+
+
+# what is libnss-extrausers-rpm
+
+This repo `libnss-extrausers-rpm` is a port of `libnss-extrausers` from debian to package management system that runs on Red Hat Enterprise Linux (RHEL)
+This repository build the package `libnss-extrausers` for rpm on `rockylinux:8` and `rockylinux:9`
+
+It creates release files for `amd64` and docker images for `amd64` and `arm64`.
+
 
 # install
 
@@ -44,11 +53,16 @@ This repo build for `amd64` and `arm64` the images
 - `ghcr.io/abcdesktopio/libnss-extrausers-rpm_rockylinux:8`
 - `ghcr.io/abcdesktopio/libnss-extrausers-rpm_rockylinux:9`
 
-## File location 
+## File location inside the container image 
 
 rpm file is located inside the `/output` directory
 
+
+- Dockerfile sample using `rockylinux:9`
+
 ```Dockerfile
-COPY --from=ghcr.io/abcdesktopio/libnss-extrausers-rpm_rockylinux:9 /output/libnss-extrausers-0.6-1.el9.x86_64.rpm /
-RUN rpm -i /libnss-extrausers*.rpm
+FROM rockylinux:9
+COPY --from=ghcr.io/abcdesktopio/libnss-extrausers-rpm_rockylinux:9 /output/libnss-extrausers-0.6-1.el9.x86_64.rpm /tmp
+RUN rpm -i /tmp/libnss-extrausers-0.6-1.el9.x86_64.rpm
 ```
+
