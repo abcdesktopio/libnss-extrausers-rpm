@@ -5,8 +5,8 @@ This Name Service Switch (NSS) module reads `/var/lib/extrausers/passwd`, `/var/
 
 # what is libnss-extrausers-rpm
 
-This repo `libnss-extrausers-rpm` is a port of `libnss-extrausers` from debian to package management system that runs on Red Hat Enterprise Linux (RHEL)
-This repository build the package `libnss-extrausers` for rpm on `rockylinux:8` and `rockylinux:9`
+This repo `libnss-extrausers-rpm` is a port of `libnss-extrausers` from debian to package management system that runs on Red Hat Enterprise Linux (RHEL).
+This repository build the `RPM` package of `libnss-extrausers` on `rockylinux:8` and `rockylinux:9`
 
 It creates release files for `amd64` and docker images for `amd64` and `arm64`.
 
@@ -44,7 +44,6 @@ Get sources and apply Debian patches
 wget -O $SOURCES_DIR/libnss-extrausers_$VERSION.orig.tar.gz \  http://deb.debian.org/debian/pool/main/libn/libnss-extrausers/libnss-extrausers_0.6.orig.tar.gz && \
     wget -O $SOURCES_DIR/libnss-extrausers_$VERSION-$DEB_RELEASE.debian.tar.xz \
     http://deb.debian.org/debian/pool/main/libn/libnss-extrausers/libnss-extrausers_0.6-6.debian.tar.xz
-
 ```
 
 # Dockerfile
