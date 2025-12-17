@@ -107,7 +107,7 @@ You shoud read
  => => naming to docker.io/library/libnss-extrausers-rpm-test
 ```
 
-The user `fry` is populated in `/var/lib/extrausers/passwd` and `/var/lib/extrausers/group`
+The user `fry` is provisioned in the files `/var/lib/extrausers/passwd` and `/var/lib/extrausers/group`
  
 
 
