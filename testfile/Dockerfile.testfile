@@ -7,7 +7,7 @@ ARG BASE_IMAGE=rockylinux
 ARG TEST_IMAGE=ghcr.io/abcdesktopio/libnss-extrausers-rpm_rockylinux
 
 # IMAGE_SOURCE is the container image with the RPM package 
-FROM ${TEST_IMAGE}:${BASE_RELEASE} AS IMAGE_SOURCE
+FROM ${TEST_IMAGE} AS IMAGE_SOURCE
 
 FROM ${BASE_IMAGE}:${BASE_RELEASE}
 RUN  dnf install -y diffutils
