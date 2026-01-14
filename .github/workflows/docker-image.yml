@@ -44,7 +44,7 @@ jobs:
           # create env OS_PLATFORM=linux/amd64 and PLATFORM=amd64
           # create env OS_PLATFORM=linux/arm64 and PLATFORM=arm64
           MACHINE=$(uname --machine)
-          echo $MACHINE
+          echo "MACHINE=$MACHINE" >> ${GITHUB_ENV}
           if [ $MACHINE = 'x86_64' ]; then 
              echo 'OS_PLATFORM=linux/amd64' >> ${GITHUB_ENV}
              echo 'PLATFORM=amd64' >> ${GITHUB_ENV}
@@ -105,16 +105,16 @@ jobs:
         with:
           # libnss-extrausers-0.6-1.el10.x86_64.rpm
           image: ghcr.io/${{ env.REGISTRY_IMAGE }}_${{ env.DISTRIB }}_${{ env.RELEASE }}:${{ env.PLATFORM }} 
-          path: /output/libnss-extrausers-0.6-1.el${{ env.RELEASE }}.${{ env.PLATFORM }}.rpm
+          path: /output/libnss-extrausers-0.6-1.el${{ env.RELEASE }}.${{ env.MACHINE }}.rpm
           destination: target.${{ env.DISTRIB }}.${{ env.RELEASE }}.${{ env.PLATFORM }}
           
       - name: Upload binaries to release el${{ env.RELEASE }}
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: target.${{ env.DISTRIB }}.${{ env.RELEASE }}.${{ env.PLATFORM }}/libnss-extrausers-0.6-1.el${{ env.RELEASE }}.${{ env.PLATFORM }}.rpm
-          asset_name: libnss-extrausers-0.6-1.${{ env.DISTRIB }}.el${{ env.RELEASE }}.${{ env.PLATFORM }}.rpm
-          tag: libnss-extrausers-0.6-1.${{ env.DISTRIB }}.${{ env.RELEASE }}.${{ env.PLATFORM }}
+          file: target.${{ env.DISTRIB }}.${{ env.RELEASE }}.${{ env.PLATFORM }}/libnss-extrausers-0.6-1.el${{ env.RELEASE }}.${{ env.MACHINE }}.rpm
+          asset_name: libnss-extrausers-0.6-1.${{ env.DISTRIB }}.el${{ env.RELEASE }}.${{ env.MACHINE }}.rpm
+          tag: libnss-extrausers-0.6-1.${{ env.DISTRIB }}.el${{ env.RELEASE }}.${{ env.MACHINE }}
           overwrite: true
           
   merge:
