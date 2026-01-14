@@ -51,20 +51,22 @@ WORKDIR /root
 # -----------------------------------------------------------------------------
 # Download original Debian source + Debian patchset
 # -----------------------------------------------------------------------------
-RUN wget -O $SOURCES_DIR/libnss-extrausers_$VERSION.orig.tar.gz \
-    http://deb.debian.org/debian/pool/main/libn/libnss-extrausers/libnss-extrausers_$VERSION.orig.tar.gz && \
-    wget -O $SOURCES_DIR/libnss-extrausers_$VERSION-$DEB_RELEASE.debian.tar.xz \
-    http://deb.debian.org/debian/pool/main/libn/libnss-extrausers/libnss-extrausers_$VERSION-$DEB_RELEASE.debian.tar.xz
-
+# RUN wget -O $SOURCES_DIR/libnss-extrausers_$VERSION.orig.tar.gz \
+#    http://deb.debian.org/debian/pool/main/libn/libnss-extrausers/libnss-extrausers_$VERSION.orig.tar.gz && \
+#    wget -O $SOURCES_DIR/libnss-extrausers_$VERSION-$DEB_RELEASE.debian.tar.xz \
+#    http://deb.debian.org/debian/pool/main/libn/libnss-extrausers/libnss-extrausers_$VERSION-$DEB_RELEASE.debian.tar.xz
 
 # -----------------------------------------------------------------------------
 # Add autotools build system inside the source tree.
 # We extract the source into /tmp, patch it, add configure.ac + Makefile.am,
 # repack it into a new tarball for rpmbuild.
 # -----------------------------------------------------------------------------
-RUN mkdir -p /tmp/src/libnss-extrausers-$VERSION
-RUN cd /tmp/src && tar -xf /root/rpmbuild/SOURCES/libnss-extrausers_$VERSION.orig.tar.gz
-RUN cd /tmp/src/libnss-extrausers-$VERSION && tar -xf /root/rpmbuild/SOURCES/libnss-extrausers_$VERSION-$DEB_RELEASE.debian.tar.xz
+# RUN mkdir -p /tmp/src/libnss-extrausers-$VERSION
+# RUN cd /tmp/src && tar -xf /root/rpmbuild/SOURCES/libnss-extrausers_$VERSION.orig.tar.gz
+ADD libnss-extrausers-0.6.orig.tar /tmp/src/libnss-extrausers-0.6
+# RUN cd /tmp/src/libnss-extrausers-$VERSION && tar -xf /root/rpmbuild/SOURCES/libnss-extrausers_$VERSION-$DEB_RELEASE.debian.tar.xz
+ADD libnss-extrausers_0.6-6.debian.tar /tmp/src/libnss-extrausers-0.6
+# RUN cd /tmp/src/libnss-extrausers-$VERSION && tar -xf /root/rpmbuild/SOURCES/libnss-extrausers_$VERSION-$DEB_RELEASE.debian.tar.xz
 
 # -----------------------------------------------------------------------------
 # Inject autotools build files
