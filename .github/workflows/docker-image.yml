@@ -54,6 +54,19 @@ jobs:
           platforms: linux/amd64, linux/arm64
           tags: ghcr.io/${{ env.REGISTRY_IMAGE }}_rockylinux:8
 
+      - name: Build and push Docker image almalinux 8
+        id: build_almalinux_8
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          build-args: |
+            BASE_IMAGE=almalinux
+            BASE_RELEASE=8
+          file: Dockerfile
+          platforms: linux/amd64, linux/arm64
+          tags: ghcr.io/${{ env.REGISTRY_IMAGE }}_almalinux:8
+
       - name: Build and push Docker image rockylinux 9
         id: build_rockylinux_9
         uses: docker/build-push-action@v6
@@ -67,6 +80,32 @@ jobs:
           platforms: linux/amd64, linux/arm64
           tags: ghcr.io/${{ env.REGISTRY_IMAGE }}_rockylinux:9
 
+      - name: Build and push Docker image almalinux 9
+        id: build_almalinux_9
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          build-args: |
+            BASE_IMAGE=almalinux
+            BASE_RELEASE=9
+          file: Dockerfile
+          platforms: linux/amd64, linux/arm64
+          tags: ghcr.io/${{ env.REGISTRY_IMAGE }}_almalinux:9
+          
+      - name: Build and push Docker image almalinux 10
+        id: build_almalinux_10
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          build-args: |
+            BASE_IMAGE=almalinux
+            BASE_RELEASE=10
+          file: Dockerfile
+          platforms: linux/amd64, linux/arm64
+          tags: ghcr.io/${{ env.REGISTRY_IMAGE }}_almalinux:10
+          
       - name: test Docker image rockylinux 8
         id: test_rockylinux_8
         uses: docker/build-push-action@v6
