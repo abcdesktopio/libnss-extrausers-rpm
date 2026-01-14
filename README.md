@@ -14,7 +14,7 @@ This repository build the `RPM` package of `libnss-extrausers` on
 - `almalinux:9`
 - `almalinux:10`
 
-It creates release files for `amd64` and docker images for `amd64` and `arm64`.
+It creates release files  for `amd64` and `arm64`.
 
 
 # install
