@@ -62,7 +62,7 @@ RUN wget -O $SOURCES_DIR/libnss-extrausers_$VERSION.orig.tar.gz \
 # We extract the source into /tmp, patch it, add configure.ac + Makefile.am,
 # repack it into a new tarball for rpmbuild.
 # -----------------------------------------------------------------------------
-RUN mkdir /tmp/src
+RUN mkdir -p /tmp/src/libnss-extrausers-$VERSION
 RUN cd /tmp/src && tar -xf /root/rpmbuild/SOURCES/libnss-extrausers_$VERSION.orig.tar.gz
 RUN cd /tmp/src/libnss-extrausers-$VERSION && tar -xf /root/rpmbuild/SOURCES/libnss-extrausers_$VERSION-$DEB_RELEASE.debian.tar.xz
 
