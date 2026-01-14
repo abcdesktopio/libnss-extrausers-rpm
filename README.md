@@ -6,7 +6,13 @@ This Name Service Switch (NSS) module reads `/var/lib/extrausers/passwd`, `/var/
 # what is libnss-extrausers-rpm
 
 This repo `libnss-extrausers-rpm` is a port of `libnss-extrausers` from debian to package management system that runs on Red Hat Enterprise Linux (RHEL).
-This repository build the `RPM` package of `libnss-extrausers` on `rockylinux:8` and `rockylinux:9`
+
+This repository build the `RPM` package of `libnss-extrausers` on 
+- `rockylinux:8`
+- `rockylinux:9`
+- `almalinux:8`
+- `almalinux:9`
+- `almalinux:10`
 
 It creates release files for `amd64` and docker images for `amd64` and `arm64`.
 
@@ -49,6 +55,9 @@ wget -O $SOURCES_DIR/libnss-extrausers_$VERSION.orig.tar.gz \  http://deb.debian
 # Dockerfile
 
 This repo build for `amd64` and `arm64` the images 
+- `ghcr.io/abcdesktopio/libnss-extrausers-rpm_almalinux:8`
+- `ghcr.io/abcdesktopio/libnss-extrausers-rpm_almalinux:9`
+- `ghcr.io/abcdesktopio/libnss-extrausers-rpm_almalinux:10`
 - `ghcr.io/abcdesktopio/libnss-extrausers-rpm_rockylinux:8`
 - `ghcr.io/abcdesktopio/libnss-extrausers-rpm_rockylinux:9`
 
