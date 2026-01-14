@@ -35,9 +35,8 @@ rpm -i https://github.com/abcdesktopio/libnss-extrausers-rpm/releases/download/l
 
 Download file from the release latest
 
-- [libnss-extrausers-0.6-1.el8.x86_64.rpm](https://github.com/abcdesktopio/libnss-extrausers-rpm/releases/download/libnss-extrausers-0.6-1/libnss-extrausers-0.6-1.el8.x86_64.rpm)
-- [libnss-extrausers-0.6-1.el9.x86_64.rpm](https://github.com/abcdesktopio/libnss-extrausers-rpm/releases/download/libnss-extrausers-0.6-1/libnss-extrausers-0.6-1.el9.x86_64.rpm)
-
+- [libnss-extrausers-0.6-1.rockylinux.el8.x86_64.rpm](https://github.com/abcdesktopio/libnss-extrausers-rpm/releases/download/libnss-extrausers-0.6-1.rockylinux.el9.x86_64/libnss-extrausers-0.6-1.rockylinux.el8.x86_64.rpm)
+- [libnss-extrausers-0.6-1.rockylinux.el9.x86_64.rpm](https://github.com/abcdesktopio/libnss-extrausers-rpm/releases/download/libnss-extrausers-0.6-1.rockylinux.el9.x86_64/libnss-extrausers-0.6-1.rockylinux.el9.x86_64.rpm)
 
 # source
 
@@ -54,7 +53,8 @@ wget -O $SOURCES_DIR/libnss-extrausers_$VERSION.orig.tar.gz \  http://deb.debian
 
 # Dockerfile
 
-This repo build for `amd64` and `arm64` the images 
+This repo build for architecture `amd64` and `arm64` the images 
+
 - `ghcr.io/abcdesktopio/libnss-extrausers-rpm_almalinux:8`
 - `ghcr.io/abcdesktopio/libnss-extrausers-rpm_almalinux:9`
 - `ghcr.io/abcdesktopio/libnss-extrausers-rpm_almalinux:10`
@@ -65,13 +65,12 @@ This repo build for `amd64` and `arm64` the images
 
 rpm file is located inside the `/output` directory
 
-
 - Dockerfile sample using `rockylinux:9`
 
 ```Dockerfile
 FROM rockylinux:9
-COPY --from=ghcr.io/abcdesktopio/libnss-extrausers-rpm_rockylinux:9 /output/libnss-extrausers-0.6-1.el9.x86_64.rpm /tmp
-RUN rpm -i /tmp/libnss-extrausers-0.6-1.el9.x86_64.rpm
+COPY --from=ghcr.io/abcdesktopio/libnss-extrausers-rpm_rockylinux:9 /output/libnss-extrausers-*.rpm /tmp
+RUN rpm -i /tmp/libnss-extrausers-*.rpm
 ```
 
 
