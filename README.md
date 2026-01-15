@@ -24,16 +24,16 @@ It creates release files  for `amd64` and `arm64`.
 
 # install
 
-## rockylinux release 8
+## for rockylinux release 8
 
 ```
-rpm -i https://github.com/abcdesktopio/libnss-extrausers-rpm/releases/download/libnss-extrausers-0.6-1/libnss-extrausers-0.6-1.el8.x86_64.rpm
+rpm -i https://github.com/abcdesktopio/libnss-extrausers-rpm/releases/download/libnss-extrausers-0.6-1.rockylinux.el8.x86_64/libnss-extrausers-0.6-1.rockylinux.el8.x86_64.rpm
 ```
 
-## rockylinux release 9
+## for rockylinux release 9
 
 ```
-rpm -i https://github.com/abcdesktopio/libnss-extrausers-rpm/releases/download/libnss-extrausers-0.6-1/libnss-extrausers-0.6-1.el9.x86_64.rpm
+rpm -i https://github.com/abcdesktopio/libnss-extrausers-rpm/releases/download/libnss-extrausers-0.6-1.rockylinux.el8.x86_64/libnss-extrausers-0.6-1.rockylinux.el9.x86_64.rpm
 ```
  
 # download files
