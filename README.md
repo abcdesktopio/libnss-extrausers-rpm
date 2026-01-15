@@ -1,5 +1,10 @@
 # libnss-extrausers-rpm
 
+
+
+[![CI.build.template](https://github.com/abcdesktopio/libnss-extrausers-rpm/actions/workflows/docker-image.yml/badge.svg?branch=main)](https://github.com/abcdesktopio/libnss-extrausers-rpm/actions/workflows/docker-image.yml)
+
+
 This Name Service Switch (NSS) module reads `/var/lib/extrausers/passwd`, `/var/lib/extrausers/shadow` and `/var/lib/extrausers/groups`, allowing to store system accounts and accounts copied from other systems in different files. 
 
 
